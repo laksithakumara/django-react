@@ -1,2 +1,3 @@
 # django-react
-Django and React.js development environment
+
+Render React.js inside Django project. This method able to use both React Route and Django Route.
