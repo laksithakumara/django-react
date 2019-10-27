@@ -5,7 +5,7 @@ Render React.js inside Django project. This method able to use both React Route 
 ## Install
 Before running following command please setup python virtual environment and activate that environment.
 
-```python
+```bash
 git clone git@github.com:laksithakumara/django-react.git
 
 cd django-react
