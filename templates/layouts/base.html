@@ -1,0 +1,28 @@
+{% load staticfiles i18n %}
+<!DOCTYPE html>
+{% get_current_language as LANGUAGE_CODE %}{% get_current_language_bidi as LANGUAGE_BIDI %}
+{% load render_bundle from webpack_loader %}
+<html lang="{{ LANGUAGE_CODE|default:"en-us" }}" {% if LANGUAGE_BIDI %}dir="rtl" {% endif %}
+    class="{{ request.user_agent.os.family.lower }} " id="wbs">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width" />
+        <meta name="mobile-web-app-capable" content="yes">
+        <link rel="canonical" href="http://eastglint.com/" />
+        <meta name='language' content='{{ LANGUAGE_CODE|default:"en-us" }}'>
+        {% block meta %}<meta name="author" content="EastGlint" />{% endblock %}
+        <title>{% block title %}Django React{% endblock %}</title>
+
+        {% render_bundle 'style' 'css' %}
+
+        {% block head %}{% endblock %}
+    </head>
+    <body id="body-wrapper" class="{% block body_class %}{% endblock %}">
+      <div id="root">
+        {% block content %}{% endblock %}
+      </div>
+        {% render_bundle 'vendor' %}
+        {% render_bundle 'app' %}
+        {% block footer %}{% endblock %}
+    </body>
+</html>
